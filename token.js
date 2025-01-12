@@ -1,0 +1,8 @@
+
+
+export function getToken() {
+  const token = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTViNGU1NmJkMTM4MGYzYTM2YTZjNmRjYjQxOWJmNyIsIm5iZiI6MTczNjY5Mjg5NS40NTQwMDAyLCJzdWIiOiI2NzgzZDQ5ZjEzNmUxNTdjZjI3YjM2NGQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.Jo8gvuFbEXfPlPHNJuTN1pVdhT5MAUcpOh1-u30gObw';
+  return token;
+}
+
+ 
