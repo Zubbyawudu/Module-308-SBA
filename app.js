@@ -15,8 +15,9 @@ async function displayMovies(){
       movieCard.classList.add('movie-card');
       movieCard.innerHTML = `
         <img src="https://image.tmdb.org/t/p/w500/${moviesArray[i].poster_path}" alt="${moviesArray[i].title}">
-        <h2>${moviesArray[i].title}</h2>
-        <p>${moviesArray[i].overview}</p>
+        <h3>${moviesArray[i].title}</h3>
+        <p>${trimText(moviesArray[i].overview, 80)}</p>
+        
       `;
       movieGrid.appendChild(movieCard);
       
@@ -32,3 +33,10 @@ async function displayMovies(){
   
 }
 displayMovies();
+
+function trimText(text, maxLength) {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + '...';
+  }
+  return text;
+}
