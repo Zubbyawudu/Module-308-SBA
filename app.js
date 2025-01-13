@@ -3,7 +3,12 @@ import { getMovies, getMovieDetails } from "./axios.js";
 getMovies();
 
 const movieGrid = document.getElementById('movie-grid');
+const modal = document.getElementById('modal');
+const openModalBtn = document.getElementById('movie-grid');
+const modalOverlay = document.querySelector('.modal-overlay');
+const modalContent = document.getElementById('modal-content');
 
+// To Display Movies in Gridcards
 async function displayMovies(){
   try {
     const movies = await getMovies();
@@ -36,10 +41,7 @@ async function displayMovies(){
   
 }
 displayMovies();
-const modal = document.getElementById('modal');
-const openModalBtn = document.getElementById('movie-grid');
-const modalOverlay = document.querySelector('.modal-overlay');
-const modalContent = document.getElementById('modal-content');
+
 function openModal(data){
   
   console.log(data);
