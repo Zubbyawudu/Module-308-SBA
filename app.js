@@ -1,4 +1,4 @@
-import { getMovies } from "./axios.js";
+import { getMovies, getMovieDetails } from "./axios.js";
 
 getMovies();
 
@@ -12,6 +12,9 @@ async function displayMovies(){
     for(let i = 0; i < moviesArray.length; i++){
       console.log(moviesArray[i]);
       const movieCard = document.createElement('div');
+      movieCard.addEventListener('click', () => {
+        openModal(moviesArray[i]);
+      })
       movieCard.classList.add('movie-card');
       movieCard.innerHTML = `
         <img src="https://image.tmdb.org/t/p/w500/${moviesArray[i].poster_path}" alt="${moviesArray[i].title}">
@@ -33,6 +36,28 @@ async function displayMovies(){
   
 }
 displayMovies();
+const modal = document.getElementById('modal');
+const openModalBtn = document.getElementById('movie-grid');
+const modalOverlay = document.querySelector('.modal-overlay');
+const modalContent = document.getElementById('modal-content');
+function openModal(data){
+  
+  console.log(data);
+  modalOverlay.style.display = 'flex';
+  getMovieDetails(data.id);
+  modalContent.innerHTML = `
+  <img src="https://image.tmdb.org/t/p/w500/${data.poster_path}" alt="${data.title}">
+  <div>
+    <h1>${data.title}</h1>
+    <p style="font-size: 17px">${data.overview}</p>
+  </div>
+  `;
+  
+  
+}
+
+
+
 
 function trimText(text, maxLength) {
   if (text.length > maxLength) {
@@ -41,14 +66,14 @@ function trimText(text, maxLength) {
   return text;
 }
 
+// Modal Display Function
 
-const openModalBtn = document.querySelector('.movie-grid');
 const closeModalBtn = document.querySelector('.close-btn');
-const modalOverlay = document.querySelector('.modal-overlay');
 
-openModalBtn.addEventListener('click', () => {
-    modalOverlay.style.display = 'flex';
-});
+
+// openModalBtn.addEventListener('click', () => {
+//     modalOverlay.style.display = 'flex';
+// });
 
 closeModalBtn.addEventListener('click', () => {
     modalOverlay.style.display = 'none';

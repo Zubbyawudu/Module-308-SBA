@@ -30,3 +30,24 @@ import { getToken } from "./token.js";
     
   }
 }
+
+export async function getMovieDetails(movieID) {
+  
+  try {
+
+
+    const api_key = '8a5b4e56bd1380f3a36a6c6dcb419bf7'
+     return await axios.get(`https://api.themoviedb.org/3/movie/${movieID}?language=en-US`,{
+      headers: {
+        Authorization: getToken()
+      }
+    })
+    
+    
+    
+    
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
