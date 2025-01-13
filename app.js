@@ -40,3 +40,22 @@ function trimText(text, maxLength) {
   }
   return text;
 }
+
+
+const openModalBtn = document.querySelector('.movie-grid');
+const closeModalBtn = document.querySelector('.close-btn');
+const modalOverlay = document.querySelector('.modal-overlay');
+
+openModalBtn.addEventListener('click', () => {
+    modalOverlay.style.display = 'flex';
+});
+
+closeModalBtn.addEventListener('click', () => {
+    modalOverlay.style.display = 'none';
+});
+
+modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) {
+        modalOverlay.style.display = 'none';
+    }
+});
